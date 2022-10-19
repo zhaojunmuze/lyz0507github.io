@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+  <body>
+  <a>第一个数</a>
+  <input type="test" id="inputId1" value="" /><br/>
+  <a>第二个数</a>
+  <input type="test" id="inputId2" value="" /><br/>
+  <button onclick="cal('+')">+</button>
+  <button onclick="cal('-')">-</button>
+  <button onclick="cal('*')">*</button>
+  <button onclick="cal('/')">/</button><br/>
+  <a>计算结果</a>
+  <input type="test" id="resultId" value="" />
+  <script type="text/javascript">
+   // function add() {
+   //  console.log('add');
+   //  var inputObj1 = document.getElementById('inputId1');
+   //  var inputObj2 = document.getElementById('inputId2');
+   //  var result = parseInt(inputObj1.value) + parseInt(inputObj2.value);
+   //  var resultObj = document.getElementById('result');
+   //  resultObj.value = result;
+   //  console.log(result);
+   // }
+   function cal(type) {
+    var inputObj1 = document.getElementById('inputId1');
+    var inputObj2 = document.getElementById('inputId2');
+    switch(type){
+     case '+':
+      var result = parseInt(inputObj1.value) + parseInt(inputObj2.value);
+      break;
+     case '-':
+      var result = parseInt(inputObj1.value) - parseInt(inputObj2.value);
+      break;
+     case '*':
+      var result = parseInt(inputObj1.value) * parseInt(inputObj2.value);
+      break;
+     case '/':
+      var result = parseInt(inputObj1.value) / parseInt(inputObj2.value);
+      break;
+    }
+    var resultObj = document.getElementById('resultId');
+    resultObj.value = result;
+   }
+   
+  </script>
+ </body>
+</html>
