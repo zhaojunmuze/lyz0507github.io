@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小学一年级算术训练APP（20以内）</title>
+    <style>
+      body{
+          text-align: center;
+	   font-size: 30px ;
+	  }
+      div{
+          margin: auto;
+      }
+	  input{
+          text-align: center;
+	   font-size: 1em ;
+	  }
+      input[button]{
+	   margin-right: 1em;
+	  }
+      h1{
+          text-align: center;
+      }
+      p{
+          font-size: 1.5em;
+          color: red;
+      }
+    </style>
+</head>
+<body>
+  <h1>加法计算器</h1>
+  <p>按F5刷新</p>
+  <div id = 'question'>
+    <input id = "opNum1" type = "text" readonly> 
+       <span id="op"> + </span> 
+    <input id = "opNum2" type = "text" readonly> 
+ </div>
+ <div id = 'answer'>
+   A. <input type="button" value="20" id = "answerA">
+   B. <input type="button" value="21" id = "answerB">
+   C. <input type="button" value="22" id = "answerC">
+   D. <input type="button" value="23" id = "answerD">
+ </div>
+<script>
+    var a = Math.floor(Math.random() * 20);
+    var b=Math.floor(Math.random()*20);
+    var c=a+b;
+    document.getElementById('opNum1').value=a;
+    document.querySelector('input#opNum2').value=b;
+    var answerA=document.getElementById('answerA');
+    var answerB=document.getElementById('answerB');
+    var answerC=document.getElementById('answerC');
+    var answerD=document.getElementById('answerD');
+    var arry=[];
+    arry[0]=c;
+    for (var i=1;i<=3;i++){
+        arry[i]=Math.floor(Math.random()*40);
+        for(var j=0;j<i;j++){
+            if (arry[j]==arry[i]){
+                i--;
+            }
+        }
+    }
+    var A=arry[Math.floor(Math.random()*4)];
+    var arry1=arry.filter(item=>item!=A);
+    var B=arry1[Math.floor(Math.random()*3)];
+    var arry2=arry1.filter(item=>item!=B);
+    var C=arry2[Math.floor(Math.random()*2)];
+    var arry3=arry2.filter(item=>item!=C);
+    var D=arry3[0];
+    answerA.value=A;
+    answerA.onclick=function (){if(A==c){alert("答对了");}else {alert("答错了")}};
+    answerB.value=B;
+    answerB.onclick=function (){if(B==c){alert("答对了");}else {alert("答错了")}};
+    answerC.value=C;
+    answerC.onclick=function (){if(C==c){alert("答对了");}else {alert("答错了")}};
+    answerD.value=D;
+    answerD.onclick=function (){if(D==c){alert("答对了");}else {alert("答错了")}};
+</script>
+</body>
+</html>
