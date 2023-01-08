@@ -1,0 +1,88 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>
+    动态DOM编程起点和基础
+  </title>
+  <style type="text/css">
+    body{
+      width:100%;
+    }
+    #contain{
+      background-color: white;
+      width: 500px;
+    }
+    div{
+      width:50px;
+      height:50px;
+      display: inline-block;
+      text-align: center;
+      position: absolute;
+      margin: 1em;
+      padding-top: 1em;
+      border-radius: 50%;
+      background-color: rgb(100,100,100,0.3);
+      transition: all 0.5s;
+    }
+  </style>
+
+</head>
+<body>
+<div id="contain"></div>
+<script type="text/javascript">
+  var s=['绝代有佳人，幽居在空谷。自云良家子，零落依草木.关中昔丧乱，兄弟遭杀戮。官高何足论，不得收骨肉。世情恶衰歇，万事随转烛。夫婿轻薄儿，新人美如玉。','合昏尚知时，鸳鸯不独宿。但见新人笑，哪闻旧人哭。在山泉水清，出山泉水浊。侍婢卖珠回，牵萝补茅屋。摘花不插花，采柏动盈掬。天寒翠袖薄，日暮倚修竹。'];
+  var a=[];
+  var sn=0;
+  var bodyWidth = window.innerWidth ;
+  var bodyHeight = window.innerHeight ;
+  document.body.style.width = bodyWidth + 'px';
+  document.body.style.height = bodyHeight + 'px' ;
+  var contain=document.getElementById("contain");
+  creatDiv();
+  document.body.onclick=function (){
+    for (let div of a){
+      rand(div);
+      div.onmouseover=function (){
+        var x=Math.floor(Math.random()*bodyWidth);
+        var y=Math.floor(Math.random()*bodyHeight);
+        this.style.left=x+'px';
+        this.style.top=y+'px';
+      }}
+  }
+  /*onmousemove:在鼠标指针移到指定的元素后执行Javascript代码：*/
+  document.body.onmousemove = document.body.ontouchmove =function () {
+    contain.innerHTML = '';
+    creatDiv();
+  }
+  document.body.ondblclick=function (){
+    sn=sn+1;
+    sn%2==0?sn=0:sn=1;
+    contain.innerHTML='';
+    creatDiv();
+    for (let div of a) {
+      rand(div);
+    }
+
+  }
+  function rand(div){
+    var x=Math.floor(Math.random()*bodyWidth);
+    var y=Math.floor(Math.random()*bodyHeight);
+    div.style.position='absolute';
+    div.style.left=x+'px';
+    div.style.top=y+'px';
+  }
+  function creatDiv(){
+    for (var i=0;i<s[sn].length;i++){
+      var divdom=document.createElement("div");
+      a.push(divdom);
+      divdom.style.position='static';
+      divdom.textContent=s[sn][i];
+      contain.appendChild(divdom);
+      if ((i+1)%6==0){divdom.style.borderRadius='0';}
+    }
+  }
+</script>
+</body>
+</html>
